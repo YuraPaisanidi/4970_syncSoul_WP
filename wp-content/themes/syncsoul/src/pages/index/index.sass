@@ -1,0 +1,469 @@
+@import "src/global/sass/_base"
+
+body
+	position: relative
+	opacity: 0
+
+	&:after
+		content: ""
+		background-image: url(../img/Noise_Texture.png)
+		height: 300%
+		width: 300%
+		position: fixed
+		opacity: 0
+		animation: animateGrain 8s steps(10) infinite
+		z-index: -1
+	// background-image: url(../img/backdrop-noise.png)
+	// background-repeat: repeat
+	// filter: noise(1)
+
+// .bg-noise
+// 	position: absolute
+// 	top: 0
+// 		// content: url(../img/backdrop-noise.png)
+// 	width: 100%
+// 	height: 100%
+// 	z-index: -1
+
+// 	img
+// 		object-fit: cover
+// 		width: 100%
+// 		height: 100%
+// -----CONTAINER-----
+.container
+	width: 100%
+	max-width: 1400px
+	padding: 0 15px
+	margin: 0 auto
+
+	+r(1200)
+		max-width: 1130px
+
+	+r(992)
+		max-width: 768px
+
+	+r(767)
+		max-width: 576px
+
+	+r(576)
+		max-width: 480px
+
+// -----BUTTON-----
+.btn
+	position: relative
+	display: flex
+	justify-content: center
+	align-items: center
+	text-transform: uppercase
+	height: 40px
+	border-radius: 20px
+	max-width: fit-content
+	border: 2px solid $accent
+	background-color: $dark
+	padding: 0 20px
+	font-size: 21px
+	color: $text
+	font-weight: 900
+	+transition
+
+	+r(992)
+		font-size: 19px
+
+	&:hover
+		border: 2px solid $accent
+		background: $accent
+		color: $dark
+		transform: scale(1.05)
+
+	&:active
+		border: 2px solid $accent
+		background: $accent
+		color: $dark
+
+	&--white
+		border: 2px solid $accent
+		background-color: $accent
+		color: $dark
+
+		&:hover
+			border: 2px solid $accent
+			background: $dark
+			color: $accent
+			transform: scale(1.05)
+
+		&:active
+			border: 2px solid $accent
+			background: $dark
+			color: $accent
+
+//-------TITLES-----------
+.h1
+	font-size: 101px
+	font-weight: 900
+	text-transform: uppercase
+
+	+r(992)
+		font-size: 80px
+
+	+r(767)
+		font-size: 70px
+
+	+r(576)
+		font-size: 50px
+
+	+r(420)
+		font-size: 42px
+
+.h2
+	font-size: 78px
+	line-height: 0.8
+	text-transform: uppercase
+
+	+r(992)
+		font-size: 60px
+
+// -----HAMBURGER-----
+.hamburger
+	position: relative
+	display: flex
+	padding: 0
+	border: none
+	background-color: transparent
+	transition: all .3s
+	width: 19px
+	height: 18px
+	margin-right: 15px
+	outline: none
+
+	&:hover
+		span
+			background-color: $accent
+
+			&::before,
+			&::after
+				background-color: $accent
+
+	&__item
+		position: absolute
+		right: 0
+		top: 50%
+		// transform: translate(0, -50%)
+		width: 19px
+		height: 1px
+		background-color: $text
+		border-radius: 4px
+		+transition
+		bottom: 0
+
+		&::before,
+		&::after
+			content: ''
+			display: block
+			position: absolute
+			right: 0
+			background-color: $text
+			height: 1px
+			+transition
+
+		&::before
+			top: 7px
+			width: 19px
+
+		&::after
+			top: -7px
+			width: 19px
+
+	&--active
+		z-index: 100
+
+		&:hover
+			span
+				background-color: transparent
+
+				&::before,
+				&::after
+					background-color: $accent
+
+		.hamburger__item
+			background-color: transparent
+
+			&::before
+				top: 0
+				width: 25px
+				transform: rotate(45deg)
+
+			&::after
+				top: 0
+				width: 25px
+				transform: rotate(-45deg)
+
+.header
+	position: fixed
+	top: 0
+	right: 0
+	left: 0
+	padding: 10px
+	z-index: 1000
+	// background: $dark
+
+	+r(576)
+		padding: 10px 0
+
+	&--active
+		transition: 0.6s
+		background: $dark
+
+	&__container
+		display: flex
+		align-items: center
+		justify-content: space-between
+
+	&__contact
+		color: $text
+		font-size: 14px
+		font-weight: 900
+		text-transform: uppercase
+
+		+r(576)
+			display: none
+
+		// +r(420)
+		// 	font-size: 12px
+
+		&:hover
+			color: #fff
+			transform: scale(1.05)
+
+	&__logo
+		display: flex
+		align-items: center
+		gap: 10px
+		text-transform: uppercase
+		color: #fff
+		font-weight: 600
+		letter-spacing: 2.5px
+		width: 215px
+		height: auto
+
+		+r(480)
+			width: 150px
+
+		// +r(420)
+		// 	width: 100px
+
+		img
+			width: 100%
+			height: auto
+
+	&__menu
+		display: flex
+		align-items: center
+		justify-content: center
+		font-size: 14px
+		font-weight: 900
+		text-transform: uppercase
+		gap: 15px
+
+		+r(420)
+			font-size: 12px
+
+.hero
+	height: 100vh
+	display: flex
+	flex-direction: column
+	align-items: center
+	justify-content: center
+	position: relative
+	overflow: hidden
+
+	&__swiper
+		position: absolute
+		z-index: 0
+		opacity: 0.6
+		height: 700px
+
+		+r(1600)
+			height: 600px
+
+		+r(576)
+			height: 400px
+
+		&_wrapper
+			-webkit-transition-timing-function: linear!important
+			-o-transition-timing-function: linear!important
+			transition-timing-function: linear!important
+			align-items: center
+
+			&:hover
+				cursor: url(../img/buttonArrow.svg)50 25, auto
+
+		&_slide
+			display: flex
+			justify-content: center
+			align-items: center
+			border-radius: 15px
+			overflow: hidden
+			// height: 500px
+			height: 600px
+			max-width: 300px
+			width: 100%
+			position: relative
+
+			+r(1600)
+				height: 500px
+				max-width: 230px
+
+			+r(576)
+				height: 300px
+				max-width: 150px
+
+			&:nth-child(2n)
+				height: 650px
+
+				+r(1600)
+					height: 550px
+
+				+r(576)
+					height: 350px
+
+			&:nth-child(4n)
+				height: 700px
+
+				+r(1600)
+					height: 600px
+
+				+r(576)
+					height: 400px
+
+			&:hover
+				filter: brightness(1.4)
+				transition: 0.6s
+
+			img
+				display: block
+				object-fit: cover
+				width: 100%
+				height: 100%
+
+	&__swiperText
+		position: absolute
+		bottom: -5%
+		opacity: 0.07
+		// z-index: 1
+
+		&_slide
+			font-size: 300px
+			line-height: 275px
+			font-weight: 900
+			// max-width: 120vw
+			width: 2000px
+			text-transform: uppercase
+
+			+r(767)
+				font-size: 120px !important
+				line-height: 180px
+
+			p
+				white-space: nowrap
+
+		&_wrapper
+			-webkit-transition-timing-function: linear!important
+			-o-transition-timing-function: linear!important
+			transition-timing-function: linear!important
+
+	&__bottomText
+		font-size: 300px
+		line-height: 275px
+		font-weight: 900
+		width: auto
+		text-transform: uppercase
+		opacity: 0.07
+		white-space: nowrap
+		position: absolute
+		bottom: -5%
+		z-index: -3
+
+		+rh(768)
+			font-size: 220px
+			line-height: 200px
+
+		+r(767)
+			font-size: 120px !important
+			line-height: 180px
+
+		&--animation
+			width: 100%
+			white-space: nowrap
+			animation: marquee 30s linear infinite
+
+			p
+				display: inline-block
+				padding-right: 100%
+
+	&__container
+		display: flex
+		flex-direction: column
+		align-items: center
+		justify-content: center
+
+	&__title
+		text-align: center
+		margin-bottom: 10px
+		z-index: 2
+
+	&__subtitle
+		font-size: 20px
+		font-weight: 400
+		line-height: 29px
+		letter-spacing: 0.83px
+		text-transform: uppercase
+		max-width: 705px
+		text-align: center
+		margin-bottom: 25px
+
+		+r(576)
+			font-size: 16px
+			line-height: 25px
+
+.clip-wrap
+	overflow: hidden
+	padding: 5px
+
+@keyframes marquee
+	0%
+		transform: translateX(-120%)
+
+	100%
+		transform: translateX(100%)
+
+@keyframes animateGrain
+	0%, 100%	transform:translate(0, 0)
+	10%
+		transform: translate(-5%,-10%)
+
+	20%
+		transform: translate(-15%,-20%)
+
+	30%
+		transform: translate(-5%,-10%)
+
+	40%
+		transform: translate(-15%,-20%)
+
+	50%
+		transform: translate(-5%,-10%)
+
+	60%
+		transform: translate(-15%,-20%)
+
+	70%
+		transform: translate(-5%,-10%)
+
+	80%
+		transform: translate(-15%,-20%)
+
+	90%
+		transform: translate(-5%,-10%)
+
+	100%
+		transform: translate(-15%,-20%)

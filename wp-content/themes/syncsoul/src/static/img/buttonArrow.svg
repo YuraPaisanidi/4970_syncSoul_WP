@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="97px" height="104px" viewBox="0 0 97 104" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 2</title>
+    <defs>
+        <filter x="-50.0%" y="-27.6%" width="200.0%" height="210.4%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="22" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="7.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Enter-The-Vibe-Website" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="About-/-Content-Page" transform="translate(-1217.000000, -2497.000000)">
+            <g id="Group-2" filter="url(#filter-1)" transform="translate(1232.000000, 2497.000000)">
+                <circle id="Oval" stroke="#FFFFFF" stroke-width="2" fill="#FFFFFF" cx="33.5" cy="33.5" r="32.5"></circle>
+                <path d="M57,29 L52.1794872,34 L57,39" id="Vector" stroke="#151515" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0,0" fill-rule="nonzero" transform="translate(54.589744, 34.000000) rotate(-180.000000) translate(-54.589744, -34.000000) "></path>
+                <path d="M14.8205128,29 L10,34 L14.8205128,39" id="Vector-Copy" stroke="#151515" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0,0" fill-rule="nonzero" transform="translate(12.410256, 34.000000) scale(-1, 1) rotate(-180.000000) translate(-12.410256, -34.000000) "></path>
+            </g>
+        </g>
+    </g>
+</svg>

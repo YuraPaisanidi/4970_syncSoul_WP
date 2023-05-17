@@ -1,0 +1,190 @@
+@import "src/global/sass/_base"
+
+body
+
+	&.viewed-page
+		.header
+			background: $dark
+
+.viewed
+
+	+r(767)
+		padding-top: 100px
+		padding-bottom: 50px
+
+	&__container
+		// background: #0D0D0D
+
+		+r(767)
+			background: none
+
+	&__wrap
+		display: grid
+		grid-template-columns: 1fr 1fr
+		height: 100vh
+
+		+r(767)
+			grid-template-columns: 1fr
+			grid-gap: 20px
+			height: auto
+
+	&__illustration
+		display: flex
+		align-items: center
+		// justify-content: flex-start
+		position: relative
+		width: 100%
+
+		+r(1590)
+			justify-content: center
+
+		&_bg
+			position: absolute
+			width: 50%
+			height: 100%
+			// z-index: -1
+
+			+r(767)
+				width: 100%
+				display: none
+
+			// &--mob
+			// 	position: absolute
+			// 	width: 100%
+			// 	height: 100%
+			// 	display: none
+			// 	z-index: 0
+
+			// 	+r(767)
+			// 		display: block
+
+			// 	img
+			// 		object-fit: cover
+			// 		width: 100%
+			// 		height: 100%
+
+			// 	&::after
+			// 		position: absolute
+			// 		content: ''
+			// 		top: 0
+			// 		left: 0
+			// 		width: 100%
+			// 		height: 100%
+			// 		background: #000
+			// 		opacity: 0.7
+
+			img
+				object-fit: cover
+				width: 100%
+				height: 100%
+
+			&::after
+				position: absolute
+				content: ''
+				top: 0
+				left: 0
+				width: 100%
+				height: 100%
+				background: #000
+				opacity: 0.55
+
+	&__img
+		max-width: 72%
+		width: 100%
+		overflow: hidden
+		border-radius: 15px
+		position: relative
+
+		+r(992)
+			max-width: 90%
+
+		+r(767)
+			max-width: 400px
+			z-index: 1
+
+		&::before
+			content: ''
+			position: absolute
+			top: 0
+			right: 0
+			width: 100%
+			height: 100%
+			background: linear-gradient(0deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 100%)
+
+		img
+			object-fit: cover
+			width: 100%
+			height: 100%
+
+	&__desc
+		padding-left: 115px
+		display: flex
+		flex-direction: column
+		justify-content: center
+
+		+r(1200)
+			padding-left: 75px
+
+		+r(992)
+			padding-left: 35px
+
+		+r(767)
+			padding-left: 0
+
+	&__title
+		margin-bottom: 25px
+
+		+r(992)
+			margin-bottom: 15px
+
+	&__role
+		margin-bottom: 20px
+		font-size: 21px
+		line-height: 33px
+		text-transform: uppercase
+		font-weight: 900
+
+		+r(992)
+			margin-bottom: 10px
+
+	&__info
+		font-size: 19px
+		line-height: 1.56
+		margin-bottom: 65px
+
+		+r(992)
+			font-size: 16px
+			margin-bottom: 25px
+
+	&__social
+		display: flex
+		align-items: center
+		gap: 10px
+		margin-bottom: 40px
+
+		+r(992)
+			margin-bottom: 20px
+
+		a
+			width: 35px
+			height: 35px
+			display: flex
+			align-items: center
+			justify-content: center
+			+transition
+
+			&:hover
+				transform: scale(1.1)
+
+			img
+				// object-fit: cover
+				width: 100%
+				height: 100%
+
+	&__buttons
+		display: flex
+		align-items: center
+		gap: 20px
+
+.clip-wrap--illustration
+	padding: 25px
