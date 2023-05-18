@@ -24,7 +24,7 @@
 	<meta http-equiv='cache-control' content='no-cache'>
 	<meta http-equiv='expires' content='0'>
 	<meta http-equiv='pragma' content='no-cache'>
-	<title><?php the_title(); ?></title>
+	<title><?php wp_title(); ?></title>
 <!-- <script defer src="assets/js/index.js"></script><link href="assets/css/index.css" rel="stylesheet"></head> -->
 
 

@@ -13,20 +13,18 @@
 		wp_enqueue_script('gsap-scrollTrigger', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/ScrollTrigger.min.js');
 		wp_enqueue_script('swiper', 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js');
 		wp_enqueue_script( 'main', get_template_directory_uri() . '/assets/js/main.js', array(), '', true );
+
 		if( is_page_template( 'templates/index.php' )) {
-			// wp_enqueue_style( 'index-style', get_template_directory_uri() . '/assets/css/index.css' );
 			wp_enqueue_script( 'index-script', get_template_directory_uri() . '/assets/js/index.js', array(), '', true );
 		}
-		if( is_page_template( 'templates/viewed.php' )) {
-			// wp_enqueue_style( 'viewed-style', get_template_directory_uri() . '/assets/css/viewed.css' );
-			wp_enqueue_script( 'viewed-script', get_template_directory_uri() . '/assets/js/viewed.js', array(), '', true );
-		}
+		// if( is_page_template( 'templates/viewed.php' )) {
+		// 	// wp_enqueue_style( 'viewed-style', get_template_directory_uri() . '/assets/css/viewed.css' );
+		// 	wp_enqueue_script( 'viewed-script', get_template_directory_uri() . '/assets/js/viewed.js', array(), '', true );
+		// }
 		if( is_page_template( 'templates/roster.php' )) {
-			// wp_enqueue_style( 'roster-style', get_template_directory_uri() . '/assets/css/roster.css' );
-			wp_enqueue_script( 'roster-script', get_template_directory_uri() . '/assets/js/roster.js', array(), '', true );
+			// wp_enqueue_script( 'roster-script', get_template_directory_uri() . '/assets/js/roster.js', array(), '', true );
 		}
 		if( is_page_template( 'templates/about.php' )) {
-			// wp_enqueue_style( 'about-style', get_template_directory_uri() . '/assets/css/about.css' );
 			wp_enqueue_script( 'about-script', get_template_directory_uri() . '/assets/js/about.js', array(), '', true );
 		}
 
@@ -96,3 +94,43 @@
 		 unset($value->response['advanced-custom-fields-pro-master/acf.php']);
 		 return $value;
  }
+
+
+ //----------------------Register post type ROSTER------------
+
+ function roster_post_type() {
+
+	$labels = array(
+			'name'                  => _x( 'Roster', 'Post Type General Name', 'text_domain' ),
+			'singular_name'         => _x( 'Roster', 'Post Type Singular Name', 'text_domain' ),
+			'menu_name'             => __( 'Roster', 'text_domain' ),
+			'all_items'             => __( 'Roster', 'text_domain' ),
+			'add_new_item'          => __( 'Add items', 'text_domain' ),
+			'add_new'               => __( 'Add item', 'text_domain' ),
+	);
+	$args = array(
+			'label'                 => __( 'Roster', 'text_domain' ),
+			'labels'                => $labels,
+			'supports'              => array( 'title', 'thumbnail', 'excerpt'),// 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
+			'hierarchical'          => false,
+			'public'                => true,
+			'show_ui'               => true,
+			'show_in_menu'          => true,
+			'menu_position'         => 4,
+			'menu_icon'             => 'dashicons-images-alt2',
+			'show_in_admin_bar'     => true,
+			'show_in_nav_menus'     => true,
+			'can_export'            => true,
+			'has_archive'           => true,
+			'exclude_from_search'   => false,
+			'publicly_queryable'    => true,
+			'capability_type'       => 'page',
+	);
+	register_post_type( 'roster', $args );
+
+}
+add_action( 'init', 'roster_post_type', 0 );
+
+register_taxonomy("roster-cat", array("roster"), array("hierarchical" => true, "label" => "Categories", "singular_label" => "activity item", "rewrite" => true));
+
+

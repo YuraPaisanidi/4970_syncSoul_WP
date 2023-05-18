@@ -1,40 +1,68 @@
-<?php
-/**
- * The template for displaying all single posts
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
- *
- * @package syncSoul
- */
+<?php get_header(); ?>
 
-get_header();
-?>
 
-	<main id="primary" class="site-main">
+<section class="viewed">
+	<div class="viewed__container">
+		<div class="viewed__illustration_bg">
+			<img src="<?php the_field('image'); ?>" alt="">
+		</div>
 
-		<?php
-		while ( have_posts() ) :
-			the_post();
+		<div class="viewed__wrap container">
+			<div class="viewed__illustration">
+				<div class="clip-wrap clip-wrap--illustration">
+					<div class="viewed__img" id="viewedImg">
+						<img src="<?php the_field('image'); ?>" alt="">
+					</div>
+				</div>
+			</div>
 
-			get_template_part( 'template-parts/content', get_post_type() );
+			<div class="viewed__desc">
+				<div class="clip-wrap">
+					<h1 class="h2 viewed__title anim-item">
+						<?php the_field('name'); ?>
+					</h1>
+				</div>
+				<div class="clip-wrap">
+					<p class="viewed__role anim-item">
+						<?php the_field('role'); ?>
+					</p>
+				</div>
+				<div class="clip-wrap">
+					<p class="viewed__info anim-item">
+						<?php the_field('desc'); ?>
+					</p>
+				</div>
 
-			the_post_navigation(
-				array(
-					'prev_text' => '<span class="nav-subtitle">' . esc_html__( 'Previous:', 'syncsoul' ) . '</span> <span class="nav-title">%title</span>',
-					'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Next:', 'syncsoul' ) . '</span> <span class="nav-title">%title</span>',
-				)
-			);
+				<div class="clip-wrap">
 
-			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
-				comments_template();
-			endif;
+				<?php if( have_rows('social_media') ): ?>
+					<div class="viewed__social anim-item">
+							<?php while( have_rows('social_media') ): the_row(); 
+								$icon = get_sub_field('icon');
+								$link = get_sub_field('link');
+								?>
 
-		endwhile; // End of the loop.
-		?>
+								<a href="<?php echo $link; ?>"><img src="<?php echo $icon; ?>" alt=""></a>
 
-	</main><!-- #main -->
+							<?php endwhile; ?>
+					</div>
+				<?php endif; ?>
 
-<?php
-get_sidebar();
-get_footer();
+				</div>
+
+				<div class="clip-wrap">
+					<div class="viewed__buttons anim-item">
+						<a href="<?php the_field('button_1_url'); ?>" class="btn btn--white">Enquire</a>
+						<a href="<?php echo get_home_url(); ?>/roster" class="btn">Back to Roster</a>
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+</section>
+
+<?php wp_enqueue_script( 'viewed-script', get_template_directory_uri() . '/assets/js/viewed.js', array(), '', true ) ?>
+
+<?php get_footer(); ?>

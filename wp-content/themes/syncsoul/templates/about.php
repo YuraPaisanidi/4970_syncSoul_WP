@@ -63,61 +63,66 @@
 			</div>
 		</div>
 
+		<div class="swiper-wrapper roster-slider__wrapper">
+		<?php $post_ID = get_the_ID(); ?>
+			<?php
+				$args = array(
+						'post_type' => 'roster',
+						'posts_per_page' => 12, 
 
-		<?php if( have_rows('section_3_slider') ): ?>
-			<div class="swiper-wrapper roster-slider__wrapper">
-					<?php while( have_rows('section_3_slider') ): the_row(); 
-						$img = get_sub_field('img');
-						$name = get_sub_field('name');
-						$role = get_sub_field('role');
-						$desc = get_sub_field('desc');
-						$socialMedia = get_sub_field('social_media');
-						$btnText = get_sub_field('btn_text');
-						$btnUrl = get_sub_field('btn_url');
-						?>
-						
-						<div class="swiper-slide roster-slider__slide">
-							<div class="roster-slider__img">
-								<img src="<?php echo $img; ?>" alt="">
-							</div>
-							<h3 class="h3 roster-slider__title">
-								<?php echo $name; ?>
-							</h3>
-							<div class="roster-slider__text">
-								<span class="roster-slider__role">
-									<?php echo $role; ?>
-								</span>
-								<p class="roster-slider__desc">
-									<?php echo $desc; ?>
-								</p>
+				);
 
-								<div class="roster-slider__links">
-								<?php if( have_rows('social_media') ): ?>
-									<div class="roster-slider__icons">
-										<?php while( have_rows('social_media') ): the_row(); 
-											$icon = get_sub_field('icon');
-											$link = get_sub_field('link');
-											?>
-											<a href="<?php echo $link; ?>"><img src="<?php echo $icon; ?>" alt=""></a>
+				$archive_posts = new WP_Query($args);
 
-										<?php endwhile; ?>
+				if ($archive_posts->have_posts()) :
+						while ($archive_posts->have_posts()) : $archive_posts->the_post();
+								?>
+									<div class="swiper-slide roster-slider__slide">
+										<div class="roster-slider__img">
+											<img src="<?php the_field( 'image', $post_id ); ?>" alt="">
+										</div>
+										<h3 class="h3 roster-slider__title">
+											<?php the_title(); ?>
+										</h3>
+										<div class="roster-slider__text">
+											<span class="roster-slider__role">
+												<?php the_field( 'role', $post_id ); ?>
+											</span>
+											<div class="roster-slider__desc">
+													<p>
+														<?php the_field( 'desc', $post_id ); ?>
+													</p>
+											</div>
+											<div class="roster__item_links">
+												<?php if( have_rows('social_media') ): ?>
+													<div class="roster-slider__icons">
+														<?php while( have_rows('social_media') ): the_row(); 
+															$icon = get_sub_field('icon');
+															$link = get_sub_field('link');
+															?>
+															<a href="<?php echo $link; ?>"><img src="<?php echo $icon; ?>" alt=""></a>
+
+														<?php endwhile; ?>
+													</div>
+												<?php endif; ?>
+
+												<a href="<?php the_permalink(); ?>" class="roster-slider__view">View Profile</a>
+											</div>
+										</div>
 									</div>
-								<?php endif; ?>
-
-									<a href="<?php echo $btnUrl; ?>" class="roster-slider__view"><?php echo $btnText; ?></a>
-								</div>
-							</div>
-						</div>
-					<?php endwhile; ?>
-			</div>
-		<?php endif; ?>
+						<?php endwhile; ?>
+				<?php endif; ?>
+		</div>
 
 	</section>
 
+
+	<?php $post = get_post($post_ID); ?>
+	
 	<section class="real">
 		<div class="real__container">
 			<div class="real__title">
-				<div class="real__title--left"><?php the_field('section_4_large_title_left'); ?></div>
+				<div class="real__title--left"><?php the_field('section_4_large_title_left'); ?><?php $post_ID; ?></div>
 				<div class="real__title--right"><?php the_field('section_4_large_title_right'); ?></div>
 			</div>
 			
@@ -184,5 +189,8 @@
 </div>
 
 <?php get_template_part( 'parts/footer' ); ?>
+
+
+
 
 <?php get_footer(); ?>

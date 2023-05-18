@@ -1,0 +1,74 @@
+********************************************************************************
+DUPLICATOR-LITE PACKAGE-LOG: 18.05.2023 17:54
+NOTICE: Do NOT post to public sites or forums 
+********************************************************************************
+VERSION:	1.5.4
+WORDPRESS:	6.2.1
+PHP INFO:	7.1.33 | SAPI: apache2handler
+SERVER:		Apache 
+PHP TIME LIMIT: (0) no time limit imposed 
+PHP MAX MEMORY: 4294967296 (1536M default) 
+MEMORY STACK: 10MB
+
+********************************************************************************
+DATABASE:
+********************************************************************************
+BUILD MODE:   MYSQLDUMP
+MYSQLTIMEOUT: 5000
+MYSQLDUMP:    Is Supported
+SQL CREATED: 20230518_enterthevibe_8adc445c59b97f1d2135_20230518175409_database.sql
+SQL FILE SIZE: 1.4MB (1464207)
+SQL FILE TIME: 2023-05-18 17:54:21
+SQL RUNTIME: 3.40 sec.
+
+********************************************************************************
+ARCHIVE (ZIP):
+********************************************************************************
+ARCHIVE DIR:  E:/OpenServer/domains/syncSoul
+ARCHIVE FILE: 20230518_enterthevibe_8adc445c59b97f1d2135_20230518175409_archive.zip
+FILTERS: *OFF*
+DIRS:
+	not set
+FILES:
+	not set
+EXTS:  not set
+----------------------------------------
+COMPRESSING
+SIZE:	105.98MB
+STATS:	Dirs 890 | Files 7,839
+SQL ADDED: 20230518_enterthevibe_8adc445c59b97f1d2135_20230518175409_database.sql
+ZipArchive Object
+(
+    [status] => 0
+    [statusSys] => 0
+    [numFiles] => 8729
+    [filename] => E:\OpenServer\domains\syncSoul\wp-content\backups-dup-lite\tmp\20230518_enterthevibe_8adc445c59b97f1d2135_20230518175409_archive.zip
+    [comment] => 
+)
+
+FILE ADDED TO ZIP: 8728
+[PHP ERR][NOTICE] MSG:ob_flush(): failed to flush buffer. No buffer to flush [CODE:8|FILE:E:\OpenServer\domains\syncSoul\wp-content\plugins\duplicator\classes\utilities\class.u.php|LINE:173]
+do_action('wp_ajax_duplicator_package_build'), WP_Hook->do_action, WP_Hook->apply_filters, duplicator_package_build, DUP_Package->runZipBuild, DUP_Archive->build, DUP_Zip::create, DUP_Util::fcgiFlush, ob_flush, DUP_Handler::error, DUP_Handler::getMessage
+COMPRESSION RESULT: '1'
+COMPRESSED SIZE: 53.51MB
+ARCHIVE RUNTIME: 68.52 sec.
+MEMORY STACK: 12MB
+building installer
+ARCHIVE CONSISTENCY TEST: PASS
+
+********************************************************************************
+INTEGRITY CHECKS:
+********************************************************************************
+SQL FILE: 1.4MB
+INSTALLER FILE: 73.35KB
+ARCHIVE FILE: 55.53MB 
+EXPECTED FILE/DIRECTORY COUNT: 8,729
+ACTUAL FILE/DIRECTORY COUNT: 8,728
+ARCHIVE CONSISTENCY TEST: Pass
+
+********************************************************************************
+RECORD ID:[1]
+TOTAL PROCESS RUNTIME: 73.39 sec.
+PEAK PHP MEMORY USED: 12MB
+DONE PROCESSING => 20230518_enterthevibe 18.05.2023 17:55
+

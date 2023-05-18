@@ -1,51 +1,79 @@
-<?php
-/**
- * The template for displaying archive pages
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package syncSoul
- */
+<?php get_header(); ?>
 
-get_header();
-?>
 
-	<main id="primary" class="site-main">
+<section class="roster">
+	<div class="roster__container container">
+		<div class="roster__head">
+			<div class="clip-wrap clip-wrap--title">
+				<h1 class="roster__title anim-item">Roster</h1>
+			</div>
+			<div class="clip-wrap">
+				<p class="roster__subtitle anim-item">
+					Representing the world’s most alluring, transportive and sultry music genres.
+				</p>
+			</div>
+		</div>
 
-		<?php if ( have_posts() ) : ?>
-
-			<header class="page-header">
-				<?php
-				the_archive_title( '<h1 class="page-title">', '</h1>' );
-				the_archive_description( '<div class="archive-description">', '</div>' );
-				?>
-			</header><!-- .page-header -->
-
+		<!-- <div class="roster__list">
+		
 			<?php
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
+				$args = array(
+						'post_type' => 'roster', // Тип записів, які ви хочете вивести
+						'posts_per_page' => 3, // Кількість постів, які ви хочете показати
+				);
 
-				/*
-				 * Include the Post-Type-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_type() );
+				$archive_posts = new WP_Query($args);
 
-			endwhile;
+				if ($archive_posts->have_posts()) :
+						while ($archive_posts->have_posts()) : $archive_posts->the_post();
+								// Відображення постів з архіву
+								// the_title(); // Приклад виводу заголовку поста
+								// the_content(); // Приклад виводу контенту поста
+								?>
+								<div class="roster__item">
+									<div class="roster__item_img">
+										<img src="<?php the_field( 'image', $post_id ); ?>" alt="">
+									</div>
+									<div class="roster__item_text">
+										<h3 class="h3 roster__item_title">
+											<a href="<?php the_permalink(); ?>">
+												<?php the_title(); ?>
+											</a>
+										</h3>
+										<span class="roster__item_role">
+											<?php the_field( 'role', $post_id ); ?>
+										</span>
+									</div>
 
-			the_posts_navigation();
+									<div class="roster__item_links">
+										<?php if( have_rows('social_media') ): ?>
+													<?php while( have_rows('social_media') ): the_row(); 
+														$icon = get_sub_field('icon');
+														$link = get_sub_field('link');
+														?>
 
-		else :
+														<a href="<?php echo $link; ?>"><img src="<?php echo $icon; ?>" alt=""></a>
 
-			get_template_part( 'template-parts/content', 'none' );
+													<?php endwhile; ?>
+										<?php endif; ?>
+									</div>
 
-		endif;
-		?>
+								</div>
+							<?php endwhile; ?>
+				<?php endif; ?>
 
-	</main><!-- #main -->
+					
+		</div> -->
 
-<?php
-get_sidebar();
-get_footer();
+		<?php echo do_shortcode('[ajax_load_more post_type="roster" posts_per_page="3" scroll="false"]') ?>
+		<!-- <button href="#" class="roster__btn btn" id="load-more-button">Load more</button> -->
+
+	</div>
+</section>
+
+
+<?php get_template_part( 'parts/footer' ); ?>
+
+<?php wp_enqueue_script( 'roster-script', get_template_directory_uri() . '/assets/js/roster.js', array(), '', true ); ?>
+
+<?php get_footer(); ?>

@@ -1,5 +1,0 @@
-import "./../sass/main.sass"
-import "./../../pages/index/index.sass"
-import "./../../pages/roster/roster.sass"
-import "./../../pages/about/about.sass"
-import "./../../pages/viewed/viewed.sass"
